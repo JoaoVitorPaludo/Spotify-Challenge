@@ -1,0 +1,1 @@
+Pasta para as rotas de redirecionamento da aplicação

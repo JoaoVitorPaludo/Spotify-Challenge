@@ -1,0 +1,1 @@
+Pasta para os arquivos de consumo e controle dos endpoints da API
