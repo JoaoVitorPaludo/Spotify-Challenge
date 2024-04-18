@@ -6,4 +6,9 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
+
+body{
+    background-color: ${(props) => props.theme['black-500']};
+    color: ${(props) => props.theme['white-100']};
+}
 `
