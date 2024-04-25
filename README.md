@@ -1,7 +1,7 @@
 # Requisitos
 ## Requisitos obrigatórios
 - [ ] Seguimentação de commits
-- [ ] Lint
+- [X] Lint
 - [ ] Autenticação via Spotify
 - [ ] Listar artistas
 - [ ] Listar albuns de um artista
