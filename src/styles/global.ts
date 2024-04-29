@@ -8,7 +8,9 @@ box-sizing: border-box;
 }
 
 body{
-    background-color: ${(props) => props.theme['black-500']};
+    background: ${(props) => props.theme['black-500']};
     color: ${(props) => props.theme['white-100']};
+    font-family: Rubik;
+
 }
 `
