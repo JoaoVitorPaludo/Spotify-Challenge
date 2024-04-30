@@ -15,15 +15,15 @@ export function SidebarComponent() {
           <FiHome size={24} />
           <span>Home</span>
         </S.SidebarComponentItem>
-        <S.SidebarComponentItem to="">
+        <S.SidebarComponentItem to="/artists">
           <BiDisc size={24} />
           <span>Artista</span>
         </S.SidebarComponentItem>
-        <S.SidebarComponentItem to="">
+        <S.SidebarComponentItem to="/playlist">
           <CiPlay1 size={24} />
           <span>Playlist</span>
         </S.SidebarComponentItem>
-        <S.SidebarComponentItem to="">
+        <S.SidebarComponentItem to="/profile">
           <FiUser size={24} />
           <span>Perfil</span>
         </S.SidebarComponentItem>
