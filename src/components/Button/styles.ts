@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface ButtonProps {
-  size: number
+  size?: number
 }
 export const Button = styled.button<ButtonProps>`
   background: ${(props) => props.theme['green-500']};

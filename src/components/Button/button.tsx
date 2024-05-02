@@ -3,7 +3,7 @@ import { Button } from './styles'
 
 interface ButtonComponentProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string
-  size: number
+  size?: number
 }
 export function ButtonComponent({ text, size, ...rest }: ButtonComponentProps) {
   return (
