@@ -11,6 +11,8 @@ body{
     background: ${(props) => props.theme['black-500']};
     color: ${(props) => props.theme['white-100']};
     font-family: Rubik;
-
+    .MuiDialog-paper {
+    background-color: transparent !important;
+  }
 }
 `
