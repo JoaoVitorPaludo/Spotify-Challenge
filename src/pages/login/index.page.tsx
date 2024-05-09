@@ -3,7 +3,7 @@ import { ButtonComponent } from '../../components/Button/button'
 import * as S from './styles'
 export function LoginPage() {
   function handleAuthPage() {
-    window.location.href = `${import.meta.env.VITE_API_URL}/authorize?client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=http://localhost:5174/home&response_type=code`
+    window.location.href = `${import.meta.env.VITE_API_URL}/authorize?client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=http://localhost:5174/callback&response_type=code`
   }
   return (
     <S.LoginContainer>

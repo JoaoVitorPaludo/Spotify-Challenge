@@ -13,6 +13,7 @@ function PrivateRoutes() {
       <SidebarComponent />
       <Routes>
         <Route path="/home" element={<HomePage />} />
+
         <Route path="/artists" element={<ArtistsPage />} />
         <Route path="/playlist" element={<PlaylistPage />} />
         <Route path="/profile" element={<ProfilePage />} />
@@ -21,12 +22,23 @@ function PrivateRoutes() {
   )
 }
 
+function validateRoutes() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const code = urlParams.get('code')
+  if (code) {
+    return PrivateRoutes()
+  }
+  return LoginPage()
+}
+
 export function PublicRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/*" element={<PrivateRoutes />} />
+        <Route path="/callback" element={validateRoutes()} />
+
+        <Route path="/*" element={PrivateRoutes()} />
       </Routes>
     </BrowserRouter>
   )
