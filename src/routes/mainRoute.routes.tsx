@@ -1,4 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useCookies } from 'react-cookie'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import { SidebarComponent } from '../components/Sidebar/sidebar'
 import { ArtistsPage } from '../pages/artists/index.page'
 import { HomePage } from '../pages/home/index.page'
@@ -13,7 +15,6 @@ function PrivateRoutes() {
       <SidebarComponent />
       <Routes>
         <Route path="/home" element={<HomePage />} />
-
         <Route path="/artists" element={<ArtistsPage />} />
         <Route path="/playlist" element={<PlaylistPage />} />
         <Route path="/profile" element={<ProfilePage />} />
@@ -22,13 +23,24 @@ function PrivateRoutes() {
   )
 }
 
-function validateRoutes() {
+function ValidateRoutes() {
+  const navigate = useNavigate()
+  const [cookies, setCookie, removeCookie] = useCookies(['token'])
   const urlParams = new URLSearchParams(window.location.search)
   const code = urlParams.get('code')
-  if (code) {
-    return PrivateRoutes()
-  }
-  return LoginPage()
+
+  useEffect(() => {
+    if (code) {
+      setCookie('token', code, {
+        path: '/',
+      })
+      navigate('/home') // Redireciona para a rota /home
+    } else {
+      removeCookie('token')
+    }
+  }, [code, navigate, removeCookie, setCookie])
+
+  return code ? null : <LoginPage />
 }
 
 export function PublicRoutes() {
@@ -36,9 +48,8 @@ export function PublicRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/callback" element={validateRoutes()} />
-
-        <Route path="/*" element={PrivateRoutes()} />
+        <Route path="/callback" element={<ValidateRoutes />} />
+        <Route path="*" element={<PrivateRoutes />} />
       </Routes>
     </BrowserRouter>
   )
