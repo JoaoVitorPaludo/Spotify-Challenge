@@ -1,73 +1,13 @@
 import { Dialog } from '@mui/material'
 
-import { useEffect, useState } from 'react'
-import { useCookies } from 'react-cookie'
 import { ButtonComponent } from '../../components/Button/button'
-import { getPlaylistList } from '../../controller/playlistController/playlistController'
 import { ModalNewPlaylist } from './components/modalNewPlaylist/index.page'
 import * as S from './styles'
-
-interface PlaylistListItemProps {
-  collaborative: boolean
-  description: string
-  external_urls: {
-    spotify: string
-  }
-  href: string
-  id: string
-  images: {
-    height: number
-    url: string
-    width: number
-  }[]
-  name: string
-  owner: {
-    display_name: string
-    external_urls: {
-      spotify: string
-    }
-    href: string
-    id: string
-    type: string
-    uri: string
-  }
-  primary_color: string
-  public: boolean
-  snapshot_id: string
-  tracks: {
-    href: string
-    total: number
-  }
-  type: string
-  uri: string
-}
-interface PlaylistListProps {
-  href: string
-  limit: number
-  next?: string
-  offset: number
-  previous?: string
-  total: number
-  items: PlaylistListItemProps[]
-}
+import { usePlaylist } from './usePlaylist'
 
 export function PlaylistPage() {
-  const [handlePlaylistModal, setHandlePlayListModal] = useState<boolean>(false)
-  const [playlistList, setPlaylistList] = useState<PlaylistListProps>(
-    {} as PlaylistListProps,
-  )
-  const [cookies] = useCookies(['token'])
-  async function getPlaylist() {
-    try {
-      const { data } = await getPlaylistList(cookies.token)
-      setPlaylistList(data)
-      console.log(data)
-    } catch (err) {}
-  }
-
-  useEffect(() => {
-    getPlaylist()
-  }, [])
+  const { handlePlaylistModal, playlistList, setHandlePlayListModal } =
+    usePlaylist()
 
   return (
     <S.PlaylistPageComponent>

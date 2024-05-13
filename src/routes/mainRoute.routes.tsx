@@ -28,7 +28,7 @@ function PrivateRoutes() {
 
 function ValidateRoutes() {
   const navigate = useNavigate()
-  const [cookies, setCookie, removeCookie] = useCookies(['token'])
+  const [, setCookie, removeCookie] = useCookies(['token'])
   const urlParams = new URLSearchParams(window.location.search)
   const code = urlParams.get('code')
 
