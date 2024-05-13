@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ModalNewPlaylistContainer = styled.main`
+export const ModalNewPlaylistContainer = styled.form`
   width: 37.5rem;
   height: 19.625rem;
   background: #303030;
@@ -24,8 +24,10 @@ export const ModalNewPlaylistHeader = styled.header`
     }
   }
 `
-
-export const ModalNewPlaylistMain = styled.div`
+type ModalNewPlaylistMainProps = {
+  $hasError: boolean
+}
+export const ModalNewPlaylistMain = styled.main<ModalNewPlaylistMainProps>`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -46,7 +48,8 @@ export const ModalNewPlaylistMain = styled.div`
     height: 2.25rem;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #ffffff33;
+    border-bottom: 1px solid
+      ${(props) => (props.$hasError ? '#9c0000' : '#ffffff33')};
     color: ${(props) => props.theme['white-100']};
     outline: none !important;
     text-align: center;

@@ -16,28 +16,28 @@ export function SidebarComponent() {
       <S.SidebarComponentMain>
         <S.SidebarComponentItem
           to="/home"
-          isSelected={location.pathname === '/home'}
+          $isSelected={location.pathname === '/home'}
         >
           <FiHome size={24} />
           <span>Home</span>
         </S.SidebarComponentItem>
         <S.SidebarComponentItem
           to="/artists"
-          isSelected={location.pathname === '/artists'}
+          $isSelected={location.pathname === '/artists'}
         >
           <BiDisc size={24} />
           <span>Artista</span>
         </S.SidebarComponentItem>
         <S.SidebarComponentItem
           to="/playlist"
-          isSelected={location.pathname === '/playlist'}
+          $isSelected={location.pathname === '/playlist'}
         >
           <CiPlay1 size={24} />
           <span>Playlist</span>
         </S.SidebarComponentItem>
         <S.SidebarComponentItem
           to="/profile"
-          isSelected={location.pathname === '/profile'}
+          $isSelected={location.pathname === '/profile'}
         >
           <FiUser size={24} />
           <span>Perfil</span>

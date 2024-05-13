@@ -1,3 +1,4 @@
+import Skeleton from 'react-loading-skeleton'
 import styled from 'styled-components'
 
 export const ProfilePageComponent = styled.main`
@@ -21,4 +22,14 @@ export const ProfilePageComponent = styled.main`
     letter-spacing: 0.01em;
     text-align: left;
   }
+`
+interface SkeletonComponentProps {
+  borderSize: string
+  width: number
+  height: number
+}
+export const SkeletonComponent = styled(Skeleton)<SkeletonComponentProps>`
+  width: ${(props) => `${props.width}rem`} !important;
+  height: ${(props) => `${props.height}rem`}!important;
+  border-radius: ${(props) => `${props.borderSize}rem`};
 `

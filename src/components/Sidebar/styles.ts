@@ -21,7 +21,7 @@ export const SidebarComponentMain = styled.main`
 `
 
 interface SidebarComponentItemProps {
-  isSelected: boolean
+  $isSelected: boolean
 }
 export const SidebarComponentItem = styled(Link)<SidebarComponentItemProps>`
   color: ${(props) => props.theme['white-100']};
@@ -33,7 +33,7 @@ export const SidebarComponentItem = styled(Link)<SidebarComponentItemProps>`
   border-radius: 5px;
   width: 100%;
   gap: 1rem;
-  background: ${(props) => (props.isSelected ? '#ffffff1a' : 'transparent')};
+  background: ${(props) => (props.$isSelected ? '#ffffff1a' : 'transparent')};
   cursor: pointer;
   span {
     font-size: 1rem;

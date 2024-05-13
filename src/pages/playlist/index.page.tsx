@@ -29,17 +29,31 @@ export function PlaylistPage() {
           handleCloseModal={() => setHandlePlayListModal(false)}
         />
       </Dialog>
-      <S.PlaylistPageList>
-        {playlistList?.items?.map((playlistList) => (
-          <S.PlaylistPageListItem key={playlistList.id}>
-            <img src={playlistList.images[0].url} alt="Playlist Image" />
+      {playlistList?.items ? (
+        <>
+          <S.PlaylistPageList>
+            {playlistList?.items?.map((playlistList) => (
+              <S.PlaylistPageListItem key={playlistList.id}>
+                <img src={playlistList.images[0].url} alt="Playlist Image" />
+                <S.PlaylistPageListLabel>
+                  <p>{playlistList.name}</p>
+                  <span>{playlistList.owner.display_name}</span>
+                </S.PlaylistPageListLabel>
+              </S.PlaylistPageListItem>
+            ))}
+          </S.PlaylistPageList>
+        </>
+      ) : (
+        <S.PlaylistPageList>
+          <S.PlaylistPageListItem>
+            <S.SkeletonComponent width={4.5} height={4.5} borderSize="0" />
             <S.PlaylistPageListLabel>
-              <p>{playlistList.name}</p>
-              <span>{playlistList.owner.display_name}</span>
+              <S.SkeletonComponent width={7} height={1.5} borderSize="2" />
+              <S.SkeletonComponent width={7} height={1.5} borderSize="2" />
             </S.PlaylistPageListLabel>
           </S.PlaylistPageListItem>
-        ))}
-      </S.PlaylistPageList>
+        </S.PlaylistPageList>
+      )}
     </S.PlaylistPageComponent>
   )
 }

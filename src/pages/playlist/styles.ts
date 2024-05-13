@@ -1,3 +1,4 @@
+import Skeleton from 'react-loading-skeleton'
 import styled from 'styled-components'
 
 export const PlaylistPageComponent = styled.main`
@@ -60,4 +61,14 @@ export const PlaylistPageListLabel = styled.label`
     text-align: left;
     color: #ffffffcc;
   }
+`
+interface SkeletonComponentProps {
+  borderSize: string
+  width: number
+  height: number
+}
+export const SkeletonComponent = styled(Skeleton)<SkeletonComponentProps>`
+  width: ${(props) => `${props.width}rem`} !important;
+  height: ${(props) => `${props.height}rem`}!important;
+  border-radius: ${(props) => `${props.borderSize}rem`};
 `
