@@ -1,5 +1,20 @@
+import { useEffect } from 'react'
+import { useCookies } from 'react-cookie'
+import { getArtistsList } from '../../controller/artistsController/artistsController'
 import * as S from './styles'
 export function ArtistsPage() {
+  const [cookies] = useCookies(['token'])
+
+  async function testEndpoint() {
+    try {
+      await getArtistsList(cookies.token)
+    } catch (error) {}
+  }
+
+  useEffect(() => {
+    testEndpoint()
+  }, [])
+
   return (
     <S.ArtistsPageComponent>
       <h1>Top Artistas</h1>

@@ -7,6 +7,7 @@ export const getAcessToken = async (code: string) => {
       grant_type: 'authorization_code',
       code,
       redirect_uri: 'http://localhost:5174/callback',
+      scope: 'user-top-read',
     },
     {
       headers: {
