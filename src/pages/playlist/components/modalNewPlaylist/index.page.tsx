@@ -12,6 +12,7 @@ import * as S from './styles'
 
 interface ModalNewPlaylistProps {
   handleCloseModal: () => void
+  getPlaylist: (offset?: number) => void
 }
 
 const CreateNewPlaylistSchema = z.object({
@@ -20,7 +21,10 @@ const CreateNewPlaylistSchema = z.object({
 export type CreateNewPlaylistSchemaData = z.infer<
   typeof CreateNewPlaylistSchema
 >
-export function ModalNewPlaylist({ handleCloseModal }: ModalNewPlaylistProps) {
+export function ModalNewPlaylist({
+  handleCloseModal,
+  getPlaylist,
+}: ModalNewPlaylistProps) {
   const methods = useForm<CreateNewPlaylistSchemaData>({
     resolver: zodResolver(CreateNewPlaylistSchema),
   })
@@ -29,8 +33,13 @@ export function ModalNewPlaylist({ handleCloseModal }: ModalNewPlaylistProps) {
 
   async function handleSubmitForm(dataForm: CreateNewPlaylistSchemaData) {
     try {
-      await postNewPlaylist(dataForm, cookies.token)
+      await postNewPlaylist(
+        dataForm,
+        cookies.token,
+        'wafagim10zwptpetc6uqh9pt2',
+      )
       handleCloseModal()
+      getPlaylist()
       methods.reset()
     } catch (error) {
       if (error instanceof AxiosError) {

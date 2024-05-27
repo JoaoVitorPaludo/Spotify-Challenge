@@ -1,5 +1,6 @@
 import { Dialog, Pagination } from '@mui/material'
 
+import { PiMusicNotesDuotone } from 'react-icons/pi'
 import { ButtonComponent } from '../../components/Button/button'
 import { ModalNewPlaylist } from './components/modalNewPlaylist/index.page'
 import * as S from './styles'
@@ -11,9 +12,10 @@ export function PlaylistPage() {
     playlistList,
     setHandlePlayListModal,
     handlePagenate,
+    getPlaylist,
   } = usePlaylist()
   console.log(Math.round(5 / 5))
-  console.log('playlistList', playlistList.total)
+  console.log('playlistList', playlistList)
   return (
     <S.PlaylistPageComponent>
       <S.PlaylistPageHeader>
@@ -32,6 +34,7 @@ export function PlaylistPage() {
       >
         <ModalNewPlaylist
           handleCloseModal={() => setHandlePlayListModal(false)}
+          getPlaylist={() => getPlaylist(0)}
         />
       </Dialog>
       {playlistList?.items ? (
@@ -39,7 +42,13 @@ export function PlaylistPage() {
           <S.PlaylistPageList>
             {playlistList?.items?.map((playlistList) => (
               <S.PlaylistPageListItem key={playlistList.id}>
-                <img src={playlistList.images[0].url} alt="Playlist Image" />
+                {playlistList?.images?.length > 0 ? (
+                  <img src={playlistList.images[0].url} alt="Playlist Image" />
+                ) : (
+                  <div className="no-image">
+                    <PiMusicNotesDuotone size={32} />
+                  </div>
+                )}
                 <S.PlaylistPageListLabel>
                   <p>{playlistList.name}</p>
                   <span>{playlistList.owner.display_name}</span>
@@ -61,9 +70,7 @@ export function PlaylistPage() {
       )}
       <S.PlaylistPagination>
         <Pagination
-          count={
-            playlistList.total > 5 ? Math.round(playlistList.total / 5) : 1
-          }
+          count={playlistList.total > 5 ? Math.ceil(playlistList.total / 5) : 1}
           color="secondary"
           shape="rounded"
           onChange={handlePagenate}

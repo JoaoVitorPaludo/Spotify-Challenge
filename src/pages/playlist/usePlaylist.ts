@@ -65,6 +65,7 @@ export const usePlaylist = () => {
       }
     }
   }
+
   async function handlePagenate(
     event: React.ChangeEvent<unknown>,
     value: number,
@@ -80,5 +81,6 @@ export const usePlaylist = () => {
     handlePlaylistModal,
     playlistList,
     handlePagenate,
+    getPlaylist,
   }
 }

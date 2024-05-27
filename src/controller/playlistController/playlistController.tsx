@@ -25,7 +25,7 @@ export const postNewPlaylist = async (
   const response = await api.post(
     `https://api.spotify.com/v1/users/${userId}/playlists`,
     {
-      name,
+      ...name,
     },
     {
       headers: {
@@ -35,3 +35,5 @@ export const postNewPlaylist = async (
   )
   return response
 }
+
+export const getUserId = async () => {}

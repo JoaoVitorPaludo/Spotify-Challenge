@@ -45,6 +45,14 @@ export const PlaylistPageListItem = styled.div`
     width: 4.5rem;
     height: 4.5rem;
   }
+  .no-image {
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: ${(props) => props.theme['black-900']};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
 export const PlaylistPageListLabel = styled.label`
   p {
