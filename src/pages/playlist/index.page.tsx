@@ -14,8 +14,7 @@ export function PlaylistPage() {
     handlePagenate,
     getPlaylist,
   } = usePlaylist()
-  console.log(Math.round(5 / 5))
-  console.log('playlistList', playlistList)
+
   return (
     <S.PlaylistPageComponent>
       <S.PlaylistPageHeader>

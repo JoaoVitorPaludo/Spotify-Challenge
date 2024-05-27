@@ -4,7 +4,6 @@ import { useProfile } from './useProfile'
 
 export function ProfilePage() {
   const { profileList, removeCookie } = useProfile()
-  console.log(profileList.id)
   return (
     <S.ProfilePageComponent>
       {profileList.id !== undefined ? (

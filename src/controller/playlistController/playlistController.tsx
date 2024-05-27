@@ -1,4 +1,4 @@
-import { CreateNewPlaylistSchemaData } from '../../pages/playlist/components/modalNewPlaylist/index.page'
+import { CreateNewPlaylistSchemaData } from '../../pages/playlist/components/modalNewPlaylist/useNewPlaylist'
 import { api } from '../../service/api'
 
 export const getPlaylistList = async (
@@ -36,4 +36,11 @@ export const postNewPlaylist = async (
   return response
 }
 
-export const getUserId = async () => {}
+export const getUserId = async (token: string) => {
+  const response = await api.get('https://api.spotify.com/v1/me', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  return response
+}

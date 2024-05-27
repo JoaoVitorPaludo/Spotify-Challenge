@@ -1,54 +1,23 @@
-import { useForm } from 'react-hook-form'
 import { PiX } from 'react-icons/pi'
-import { z } from 'zod'
 import { ButtonComponent } from '../../../../components/Button/button'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { AxiosError } from 'axios'
-import { useCookies } from 'react-cookie'
-import { postNewPlaylist } from '../../../../controller/playlistController/playlistController'
-import { useTokenValidator } from '../../../../libs/zustand/globalStore'
 import * as S from './styles'
+import { useNewPlaylist } from './useNewPlaylist'
 
 interface ModalNewPlaylistProps {
   handleCloseModal: () => void
   getPlaylist: (offset?: number) => void
 }
 
-const CreateNewPlaylistSchema = z.object({
-  name: z.string().min(1),
-})
-export type CreateNewPlaylistSchemaData = z.infer<
-  typeof CreateNewPlaylistSchema
->
 export function ModalNewPlaylist({
   handleCloseModal,
   getPlaylist,
 }: ModalNewPlaylistProps) {
-  const methods = useForm<CreateNewPlaylistSchemaData>({
-    resolver: zodResolver(CreateNewPlaylistSchema),
+  const { handleSubmitForm, methods } = useNewPlaylist({
+    handleCloseModal,
+    getPlaylist,
   })
-  const { validateStatus } = useTokenValidator()
-  const [cookies, , removeCookie] = useCookies(['token'])
 
-  async function handleSubmitForm(dataForm: CreateNewPlaylistSchemaData) {
-    try {
-      await postNewPlaylist(
-        dataForm,
-        cookies.token,
-        'wafagim10zwptpetc6uqh9pt2',
-      )
-      handleCloseModal()
-      getPlaylist()
-      methods.reset()
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        validateStatus(error.response!.status, removeCookie)
-      }
-    }
-  }
-
-  console.log(methods.formState.isValid)
   return (
     <S.ModalNewPlaylistContainer
       onSubmit={methods.handleSubmit(handleSubmitForm)}

@@ -3,7 +3,6 @@ import * as S from './styles'
 import { useArtists } from './useArtists'
 export function ArtistsPage() {
   const { artistList, handlePagenate } = useArtists()
-  console.log('artistList', artistList)
   return (
     <S.ArtistsPageComponent>
       <h1>Top Artistas</h1>

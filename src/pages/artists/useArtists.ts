@@ -1,6 +1,8 @@
+import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { getArtistsList } from '../../controller/artistsController/artistsController'
+import { useTokenValidator } from '../../libs/zustand/globalStore'
 
 interface ArtistListProps {
   items: {
@@ -27,10 +29,12 @@ interface ArtistListProps {
   total: number
 }
 export const useArtists = () => {
-  const [cookies] = useCookies(['token'])
+  const [cookies, , removeCookie] = useCookies(['token'])
   const [artistList, setArtistList] = useState<ArtistListProps>(
     {} as ArtistListProps,
   )
+  const { validateStatus } = useTokenValidator()
+
   useEffect(() => {
     getTopArtistsList()
   }, [])
@@ -39,7 +43,11 @@ export const useArtists = () => {
     try {
       const { data } = await getArtistsList(cookies.token, 5, offset || 0)
       setArtistList(data)
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        validateStatus(error.response!.status, removeCookie)
+      }
+    }
   }
 
   async function handlePagenate(
