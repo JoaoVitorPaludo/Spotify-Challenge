@@ -1,48 +1,38 @@
-import { useEffect } from 'react'
-import { useCookies } from 'react-cookie'
-import { getArtistsList } from '../../controller/artistsController/artistsController'
+import { Pagination } from '@mui/material'
 import * as S from './styles'
+import { useArtists } from './useArtists'
 export function ArtistsPage() {
-  const [cookies] = useCookies(['token'])
-
-  async function testEndpoint() {
-    try {
-      await getArtistsList(cookies.token)
-    } catch (error) {}
-  }
-
-  useEffect(() => {
-    testEndpoint()
-  }, [])
-
+  const { artistList, handlePagenate } = useArtists()
+  console.log('artistList', artistList)
   return (
     <S.ArtistsPageComponent>
       <h1>Top Artistas</h1>
       <p>Aqui você encontra seus artistas preferidos</p>
-
-      <S.ArtistsPageList>
-        <S.ArtistsPageListItem>
-          <img
-            src="https://avatars.githubusercontent.com/u/83378081?v=4"
-            alt=""
-          />
-          <span>Black Alien</span>
-        </S.ArtistsPageListItem>
-        <S.ArtistsPageListItem>
-          <img
-            src="https://avatars.githubusercontent.com/u/83378081?v=4"
-            alt=""
-          />
-          <span>Black Alien</span>
-        </S.ArtistsPageListItem>
-        <S.ArtistsPageListItem>
-          <img
-            src="https://avatars.githubusercontent.com/u/83378081?v=4"
-            alt=""
-          />
-          <span>Black Alien</span>
-        </S.ArtistsPageListItem>
-      </S.ArtistsPageList>
+      {artistList?.items ? (
+        <S.ArtistsPageList>
+          {artistList?.items?.map((artist) => (
+            <S.ArtistsPageListItem key={artist.id}>
+              <img src={artist.images[0].url} alt="" />
+              <span>{artist.name}</span>
+            </S.ArtistsPageListItem>
+          ))}
+        </S.ArtistsPageList>
+      ) : (
+        <S.ArtistsPageList>
+          <S.ArtistsPageListItem>
+            <S.SkeletonComponent width={4} height={4} borderSize="50" />
+            <S.SkeletonComponent width={8} height={1.2} borderSize="2" />
+          </S.ArtistsPageListItem>
+        </S.ArtistsPageList>
+      )}
+      <S.ArtistsPagePagination>
+        <Pagination
+          count={Math.round(artistList.total / 5)}
+          color="secondary"
+          shape="rounded"
+          onChange={handlePagenate}
+        />
+      </S.ArtistsPagePagination>
     </S.ArtistsPageComponent>
   )
 }
