@@ -27,7 +27,7 @@ export function ArtistsPage() {
       )}
       <S.ArtistsPagePagination>
         <Pagination
-          count={Math.round(artistList.total / 5)}
+          count={artistList.total > 5 ? Math.round(artistList.total / 5) : 1}
           color="secondary"
           shape="rounded"
           onChange={handlePagenate}

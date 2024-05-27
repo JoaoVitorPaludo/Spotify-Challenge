@@ -34,7 +34,7 @@ export function ModalNewPlaylist({ handleCloseModal }: ModalNewPlaylistProps) {
       methods.reset()
     } catch (error) {
       if (error instanceof AxiosError) {
-        validateStatus(error.response!.status, removeCookie('token'))
+        validateStatus(error.response!.status, removeCookie)
       }
     }
   }

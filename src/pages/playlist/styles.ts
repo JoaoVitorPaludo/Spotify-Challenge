@@ -4,6 +4,8 @@ import styled from 'styled-components'
 export const PlaylistPageComponent = styled.main`
   padding: 2rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `
 export const PlaylistPageHeader = styled.header`
   display: flex;
@@ -32,6 +34,7 @@ export const PlaylistPageList = styled.div`
   flex-direction: column;
   margin-top: 2rem;
   gap: 1rem;
+  flex: 1;
 `
 export const PlaylistPageListItem = styled.div`
   display: flex;
@@ -71,4 +74,26 @@ export const SkeletonComponent = styled(Skeleton)<SkeletonComponentProps>`
   width: ${(props) => `${props.width}rem`} !important;
   height: ${(props) => `${props.height}rem`}!important;
   border-radius: ${(props) => `${props.borderSize}rem`};
+`
+
+export const PlaylistPagination = styled.div`
+  display: flex;
+  color: white !important;
+  justify-content: center;
+  .MuiPaginationItem-outlinedSecondary {
+    background-color: ${(props) => props.theme['green-700']};
+  }
+  .MuiPaginationItem-colorSecondary {
+    background-color: ${(props) => props.theme['green-700']};
+  }
+  .MuiPaginationItem-textSecondary {
+    color: white !important;
+  }
+  .Mui-selected {
+    background-color: ${(props) => props.theme['green-500']} !important;
+  }
+  .MuiPaginationItem-root:hover {
+    opacity: 0.8;
+    background-color: ${(props) => props.theme['green-700']} !important;
+  }
 `

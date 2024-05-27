@@ -55,17 +55,23 @@ export const usePlaylist = () => {
   )
   const { validateStatus } = useTokenValidator()
 
-  async function getPlaylist() {
+  async function getPlaylist(offset?: number) {
     try {
-      const { data } = await getPlaylistList(cookies.token)
+      const { data } = await getPlaylistList(cookies.token, 5, offset || 0)
       setPlaylistList(data)
     } catch (error) {
       if (error instanceof AxiosError) {
-        validateStatus(error.response!.status, removeCookie('token'))
+        validateStatus(error.response!.status, removeCookie)
       }
     }
   }
-
+  async function handlePagenate(
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ) {
+    const newValue = value - 1
+    getPlaylist(newValue * 5)
+  }
   useEffect(() => {
     getPlaylist()
   }, [])
@@ -73,5 +79,6 @@ export const usePlaylist = () => {
     setHandlePlayListModal,
     handlePlaylistModal,
     playlistList,
+    handlePagenate,
   }
 }

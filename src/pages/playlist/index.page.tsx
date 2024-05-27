@@ -1,4 +1,4 @@
-import { Dialog } from '@mui/material'
+import { Dialog, Pagination } from '@mui/material'
 
 import { ButtonComponent } from '../../components/Button/button'
 import { ModalNewPlaylist } from './components/modalNewPlaylist/index.page'
@@ -6,9 +6,14 @@ import * as S from './styles'
 import { usePlaylist } from './usePlaylist'
 
 export function PlaylistPage() {
-  const { handlePlaylistModal, playlistList, setHandlePlayListModal } =
-    usePlaylist()
-
+  const {
+    handlePlaylistModal,
+    playlistList,
+    setHandlePlayListModal,
+    handlePagenate,
+  } = usePlaylist()
+  console.log(Math.round(5 / 5))
+  console.log('playlistList', playlistList.total)
   return (
     <S.PlaylistPageComponent>
       <S.PlaylistPageHeader>
@@ -54,6 +59,16 @@ export function PlaylistPage() {
           </S.PlaylistPageListItem>
         </S.PlaylistPageList>
       )}
+      <S.PlaylistPagination>
+        <Pagination
+          count={
+            playlistList.total > 5 ? Math.round(playlistList.total / 5) : 1
+          }
+          color="secondary"
+          shape="rounded"
+          onChange={handlePagenate}
+        />
+      </S.PlaylistPagination>
     </S.PlaylistPageComponent>
   )
 }
