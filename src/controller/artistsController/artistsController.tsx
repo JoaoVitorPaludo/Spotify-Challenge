@@ -17,9 +17,14 @@ export const getArtistsList = async (
   return response
 }
 
-export const getAlbums = async (token: string, spotifyId: string) => {
+export const getAlbums = async (
+  token: string,
+  spotifyId: string,
+  limit: number,
+  offset: number,
+) => {
   const response = await api.get(
-    `https://api.spotify.com/v1/artists/${spotifyId}/albums `,
+    `https://api.spotify.com/v1/artists/${spotifyId}/albums?limit=${limit}&offset=${offset}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

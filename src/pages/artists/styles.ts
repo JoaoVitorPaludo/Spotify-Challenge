@@ -38,6 +38,7 @@ export const ArtistsPageListItem = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: fit-content;
   img {
     width: 4rem;
     height: 4rem;
@@ -50,6 +51,11 @@ export const ArtistsPageListItem = styled.div`
     line-height: 1.25rem;
     letter-spacing: 0.01em;
     text-align: left;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
   }
 `
 export const ArtistsPagePagination = styled.div`

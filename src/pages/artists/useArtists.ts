@@ -50,7 +50,7 @@ export const useArtists = () => {
     }
   }
 
-  async function handlePagenate(
+  async function handlePaginate(
     event: React.ChangeEvent<unknown>,
     value: number,
   ) {
@@ -59,7 +59,7 @@ export const useArtists = () => {
   }
 
   return {
-    handlePagenate,
+    handlePaginate,
     artistList,
   }
 }

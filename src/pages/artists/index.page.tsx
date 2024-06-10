@@ -4,7 +4,7 @@ import { ArtistContext } from '../../contexts/artistContext/artistContext'
 import * as S from './styles'
 import { useArtists } from './useArtists'
 export function ArtistsPage() {
-  const { artistList, handlePagenate } = useArtists()
+  const { artistList, handlePaginate } = useArtists()
   const { handleGetAlbum } = useContext(ArtistContext)
   return (
     <S.ArtistsPageComponent>
@@ -35,7 +35,7 @@ export function ArtistsPage() {
           count={artistList.total > 5 ? Math.ceil(artistList.total / 5) : 1}
           color="secondary"
           shape="rounded"
-          onChange={handlePagenate}
+          onChange={handlePaginate}
         />
       </S.ArtistsPagePagination>
     </S.ArtistsPageComponent>

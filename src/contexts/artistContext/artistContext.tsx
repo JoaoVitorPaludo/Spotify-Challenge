@@ -7,6 +7,7 @@ import { ItemsProps } from '../../pages/artists/useArtists'
 interface ArtistContentProps {
   name: string
   image: string
+  id: string
 }
 interface AlbumsListProps {
   items: {
@@ -17,6 +18,7 @@ interface AlbumsListProps {
     }[]
     name: string
     release_date: string
+    id: string
   }[]
   total: number
 }
@@ -24,6 +26,7 @@ interface ArtistContextProps {
   handleGetAlbum: (id: ItemsProps) => void
   albumsList: AlbumsListProps
   artistContent: ArtistContentProps
+  setAlbumsList: React.Dispatch<React.SetStateAction<AlbumsListProps>>
 }
 export const ArtistContext = createContext({} as ArtistContextProps)
 
@@ -37,13 +40,14 @@ export function ArtistProvider({ children }: ArtistProviderProps) {
   const [albumsList, setAlbumsList] = useState({} as AlbumsListProps)
   const [artistContent, setArtistContent] = useState({} as ArtistContentProps)
 
-  async function handleGetAlbum(artist: ItemsProps) {
+  async function handleGetAlbum(artist: ItemsProps, offset?: number) {
     setArtistContent({
       name: artist.name,
       image: artist?.images?.[0].url,
+      id: artist.id,
     })
     try {
-      const { data } = await getAlbums(cookies.token, artist.id)
+      const { data } = await getAlbums(cookies.token, artist.id, 5, offset || 0)
       setAlbumsList(data)
       navigate('/artists/albums')
     } catch (error) {}
@@ -54,6 +58,7 @@ export function ArtistProvider({ children }: ArtistProviderProps) {
         handleGetAlbum,
         albumsList,
         artistContent,
+        setAlbumsList,
       }}
     >
       {children}
