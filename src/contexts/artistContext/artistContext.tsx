@@ -1,7 +1,9 @@
+import { AxiosError } from 'axios'
 import { ReactNode, createContext, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 import { getAlbums } from '../../controller/artistsController/artistsController'
+import { useTokenValidator } from '../../libs/zustand/globalStore'
 import { ItemsProps } from '../../pages/artists/useArtists'
 
 interface ArtistContentProps {
@@ -36,9 +38,10 @@ interface ArtistProviderProps {
 
 export function ArtistProvider({ children }: ArtistProviderProps) {
   const navigate = useNavigate()
-  const [cookies] = useCookies(['token'])
+  const [cookies, , removeCookie] = useCookies(['token'])
   const [albumsList, setAlbumsList] = useState({} as AlbumsListProps)
   const [artistContent, setArtistContent] = useState({} as ArtistContentProps)
+  const { validateStatus } = useTokenValidator()
 
   async function handleGetAlbum(artist: ItemsProps, offset?: number) {
     setArtistContent({
@@ -50,7 +53,11 @@ export function ArtistProvider({ children }: ArtistProviderProps) {
       const { data } = await getAlbums(cookies.token, artist.id, 5, offset || 0)
       setAlbumsList(data)
       navigate('/artists/albums')
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        validateStatus(error.response!.status, removeCookie)
+      }
+    }
   }
   return (
     <ArtistContext.Provider

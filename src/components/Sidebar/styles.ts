@@ -12,6 +12,10 @@ export const SidebarComponentHeader = styled.header`
   justify-content: left;
   padding: 1.5rem;
   //padding-bottom: 2.5rem;
+
+  img {
+    cursor: pointer;
+  }
 `
 export const SidebarComponentMain = styled.main`
   display: flex;
@@ -50,8 +54,12 @@ export const SidebarComponentItem = styled(Link)<SidebarComponentItemProps>`
 export const SidebarComponentFooter = styled.footer`
   padding: 0.5rem 0.5rem;
   border-radius: 5px;
+  width: 100%;
 
   button {
+    width: 100%;
+    border-radius: 5px;
+
     display: flex;
     align-items: center;
     gap: 1rem;

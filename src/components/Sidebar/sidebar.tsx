@@ -2,16 +2,16 @@ import { BiDisc } from 'react-icons/bi'
 import { CiPlay1 } from 'react-icons/ci'
 import { FiHome, FiUser } from 'react-icons/fi'
 import { GrInstallOption } from 'react-icons/gr'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/spotify_logo_full.svg'
 import * as S from './styles'
 export function SidebarComponent() {
   const location = useLocation()
-
+  const navigate = useNavigate()
   return (
     <S.SidebarComponentContainer>
       <S.SidebarComponentHeader>
-        <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" onClick={() => navigate('/home')} />
       </S.SidebarComponentHeader>
       <S.SidebarComponentMain>
         <S.SidebarComponentItem

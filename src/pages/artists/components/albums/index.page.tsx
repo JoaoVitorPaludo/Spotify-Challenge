@@ -4,7 +4,6 @@ import * as S from './styles'
 import { useArtists } from './useAlbums'
 export function AlbumsPage() {
   const { albumsList, artistContent, handlePaginate } = useArtists()
-  console.log(albumsList)
   return (
     <S.AlbumsPageContainer>
       <S.AlbumsPageHeader>
