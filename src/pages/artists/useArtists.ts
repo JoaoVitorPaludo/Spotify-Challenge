@@ -4,28 +4,29 @@ import { useCookies } from 'react-cookie'
 import { getArtistsList } from '../../controller/artistsController/artistsController'
 import { useTokenValidator } from '../../libs/zustand/globalStore'
 
-interface ArtistListProps {
-  items: {
-    external_urls: {
-      spotify: string
-    }
-    followers: {
-      href: string
-      total: number
-    }
-    genres: []
+export interface ItemsProps {
+  external_urls: {
+    spotify: string
+  }
+  followers: {
     href: string
-    id: string
-    images: {
-      height: number
-      url: string
-      width: number
-    }[]
-    name: string
-    popularity: number
-    type: string
-    uri: string
+    total: number
+  }
+  genres: []
+  href: string
+  id: string
+  images: {
+    height: number
+    url: string
+    width: number
   }[]
+  name: string
+  popularity: number
+  type: string
+  uri: string
+}
+interface ArtistListProps {
+  items: ItemsProps[]
   total: number
 }
 export const useArtists = () => {
@@ -34,7 +35,6 @@ export const useArtists = () => {
     {} as ArtistListProps,
   )
   const { validateStatus } = useTokenValidator()
-
   useEffect(() => {
     getTopArtistsList()
   }, [])

@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import { SidebarComponent } from '../components/Sidebar/sidebar'
+import { ArtistProvider } from '../contexts/artistContext/artistContext'
 import { getAcessToken } from '../controller/routeController/routeController'
+import { AlbumsPage } from '../pages/artists/components/albums/index.page'
 import { ArtistsPage } from '../pages/artists/index.page'
 import { HomePage } from '../pages/home/index.page'
 import { LoginPage } from '../pages/login/index.page'
@@ -18,7 +20,22 @@ function PrivateRoutes() {
       <SidebarComponent />
       <Routes>
         <Route path="/home" element={<HomePage />} />
-        <Route path="/artists" element={<ArtistsPage />} />
+        <Route
+          path="/artists"
+          element={
+            <ArtistProvider>
+              <ArtistsPage />
+            </ArtistProvider>
+          }
+        />
+        <Route
+          path="/artists/albums"
+          element={
+            <ArtistProvider>
+              <AlbumsPage />
+            </ArtistProvider>
+          }
+        />
         <Route path="/playlist" element={<PlaylistPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>

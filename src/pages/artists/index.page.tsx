@@ -1,8 +1,11 @@
 import { Pagination } from '@mui/material'
+import { useContext } from 'react'
+import { ArtistContext } from '../../contexts/artistContext/artistContext'
 import * as S from './styles'
 import { useArtists } from './useArtists'
 export function ArtistsPage() {
   const { artistList, handlePagenate } = useArtists()
+  const { handleGetAlbum } = useContext(ArtistContext)
   return (
     <S.ArtistsPageComponent>
       <h1>Top Artistas</h1>
@@ -10,7 +13,10 @@ export function ArtistsPage() {
       {artistList?.items ? (
         <S.ArtistsPageList>
           {artistList?.items?.map((artist) => (
-            <S.ArtistsPageListItem key={artist.id}>
+            <S.ArtistsPageListItem
+              key={artist.id}
+              onDoubleClick={() => handleGetAlbum(artist)}
+            >
               <img src={artist.images[0].url} alt="" />
               <span>{artist.name}</span>
             </S.ArtistsPageListItem>
