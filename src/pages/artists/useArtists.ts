@@ -61,5 +61,6 @@ export const useArtists = () => {
   return {
     handlePaginate,
     artistList,
+    getTopArtistsList,
   }
 }

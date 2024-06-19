@@ -1,9 +1,9 @@
 import { Pagination } from '@mui/material'
 import { FaArrowLeft } from 'react-icons/fa'
 import * as S from './styles'
-import { useArtists } from './useAlbums'
+import { useAlbums } from './useAlbums'
 export function AlbumsPage() {
-  const { albumsList, artistContent, handlePaginate } = useArtists()
+  const { albumsList, artistContent, handlePaginate } = useAlbums()
   return (
     <S.AlbumsPageContainer>
       <S.AlbumsPageHeader>

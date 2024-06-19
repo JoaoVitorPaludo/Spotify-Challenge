@@ -14,6 +14,7 @@ export function ArtistsPage() {
         <S.ArtistsPageList>
           {artistList?.items?.map((artist) => (
             <S.ArtistsPageListItem
+              data-testid="artists-page-list"
               key={artist.id}
               onDoubleClick={() => handleGetAlbum(artist)}
             >

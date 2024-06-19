@@ -5,7 +5,7 @@ import { ArtistContext } from '../../../../contexts/artistContext/artistContext'
 import { getAlbums } from '../../../../controller/artistsController/artistsController'
 import { useTokenValidator } from '../../../../libs/zustand/globalStore'
 
-export const useArtists = () => {
+export const useAlbums = () => {
   const { albumsList, artistContent, setAlbumsList } = useContext(ArtistContext)
   const [cookies, , removeCookie] = useCookies(['token'])
   const { validateStatus } = useTokenValidator()
