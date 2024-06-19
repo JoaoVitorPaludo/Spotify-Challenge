@@ -1,11 +1,11 @@
 # Requisitos
 ## Requisitos obrigatórios
-- [ ] Seguimentação de commits
+- [X] Seguimentação de commits
 - [X] Lint
-- [ ] Autenticação via Spotify
-- [ ] Listar artistas
-- [ ] Listar albuns de um artista
-- [ ] Utilizar paginação (scroll infinito ou não)
+- [X] Autenticação via Spotify
+- [X] Listar artistas
+- [X] Listar albuns de um artista
+- [X] Utilizar paginação (scroll infinito ou não)
 - [ ] Funcionamento offline
 - [ ] Testes unitários
 - [ ] Deploy da aplicação
