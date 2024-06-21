@@ -27,7 +27,6 @@ export const useHome = () => {
   async function handleGetRecentPlayedTracks() {
     try {
       const { data } = await getRecentPlayedTracks(cookies.token)
-      console.log(data)
       setRecentPlayedTracks(data.items)
     } catch (error) {
       if (error instanceof AxiosError) {

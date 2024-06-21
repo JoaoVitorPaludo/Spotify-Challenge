@@ -10,6 +10,7 @@ import { defaultTheme } from '../../../styles/themes/default'
 describe('App', () => {
   it('Should render the App', () => {
     render(<App />)
+    expect(App).toBeDefined()
   })
 })
 export const object = {

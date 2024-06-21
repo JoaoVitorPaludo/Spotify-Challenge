@@ -10,7 +10,6 @@ type Store = {
 export const useTokenValidator = create<Store>(() => ({
   validateStatus: (status: number, removeCookie) => {
     if (status === 401) {
-      console.log('Token inválido')
       removeCookie('token')
     }
   },
