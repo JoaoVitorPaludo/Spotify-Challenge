@@ -28,6 +28,7 @@ export function PlaylistPage() {
         />
       </S.PlaylistPageHeader>
       <Dialog
+        data-testid="playlist-modal"
         open={handlePlaylistModal}
         onClose={() => setHandlePlayListModal(false)}
       >

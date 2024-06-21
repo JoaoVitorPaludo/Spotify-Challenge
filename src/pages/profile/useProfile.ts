@@ -23,10 +23,10 @@ interface ProfileListProps {
   }
 }
 export const useProfile = () => {
-  const [cookies, , removeCookie] = useCookies(['token'])
   const [profileList, setProfilList] = useState<ProfileListProps>(
     {} as ProfileListProps,
   )
+  const [cookies, , removeCookie] = useCookies(['token'])
   const { validateStatus } = useTokenValidator()
 
   async function getProfile() {

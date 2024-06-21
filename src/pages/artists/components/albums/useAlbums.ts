@@ -38,5 +38,6 @@ export const useAlbums = () => {
     handlePaginate,
     albumsList,
     artistContent,
+    handleGetAlbum,
   }
 }

@@ -14,6 +14,7 @@ export function LoginPage() {
       </S.LoginTitle>
       <ButtonComponent
         text="Entrar"
+        data-testid="login-page-button"
         size={50}
         onClick={() => handleAuthPage()}
       />

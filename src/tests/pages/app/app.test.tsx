@@ -32,13 +32,23 @@ describe('App', () => {
     render(<PublicRoutes />)
   })
 })
-describe('LoginPage', () => {
+
+const colors = {
+  baseColor: '#202020',
+  highlightColor: '#444',
+}
+describe('App', () => {
   it('Should render the SkeletonTheme', () => {
-    render(<SkeletonTheme />)
+    render(
+      <SkeletonTheme
+        baseColor={colors.baseColor}
+        highlightColor={colors.highlightColor}
+      />,
+    )
   })
 })
 
-describe('LoginPage', () => {
+describe('App', () => {
   it('Should render the GlobalStyles', () => {
     render(<GlobalStyles />)
   })

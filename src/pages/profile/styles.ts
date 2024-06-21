@@ -9,6 +9,14 @@ export const ProfilePageComponent = styled.main`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
   img {
     width: 8rem;
     height: 8rem;

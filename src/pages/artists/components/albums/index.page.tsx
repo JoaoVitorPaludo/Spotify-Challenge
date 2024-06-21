@@ -8,7 +8,11 @@ export function AlbumsPage() {
     <S.AlbumsPageContainer>
       <S.AlbumsPageHeader>
         <S.AlbumsPageTitle>
-          <FaArrowLeft size={16} onClick={() => window.history.back()} />
+          <FaArrowLeft
+            size={16}
+            onClick={() => window.history.back()}
+            data-testid="back-button-album"
+          />
           {artistContent.name}
         </S.AlbumsPageTitle>
         <img src={artistContent.image} alt="" />

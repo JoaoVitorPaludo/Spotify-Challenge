@@ -7,11 +7,15 @@ export function ProfilePage() {
   return (
     <S.ProfilePageComponent>
       {profileList.id !== undefined ? (
-        <>
+        <section data-testid="section-profile">
           <img src={profileList?.images?.[0]?.url} alt="profile" />
           <p>{profileList?.display_name}</p>
-          <ButtonComponent text="Sair" onClick={() => removeCookie('token')} />
-        </>
+          <ButtonComponent
+            text="Sair"
+            data-testid="button-profile"
+            onClick={() => removeCookie('token')}
+          />
+        </section>
       ) : (
         <>
           <S.SkeletonComponent borderSize="4" width={8} height={8} />
