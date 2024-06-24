@@ -27,8 +27,9 @@ describe('useProfile', () => {
     ;(getProfileInfos as jest.Mock).mockResolvedValue({ data: mockData })
 
     const { result } = renderHook(() => useProfile())
-
-    await waitFor(() => expect(result.current.profileList).toEqual(mockData))
+    await waitFor(() => {
+      expect(result.current.profileList).toEqual(mockData)
+    })
   })
 
   it('Should remove cookie if has as error', async () => {

@@ -1,12 +1,18 @@
 import '@testing-library/jest-dom'
 import { renderHook, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import { getPlaylistList } from '../../../controller/playlistController/playlistController'
+import { getRecentPlayedTracks } from '../../../controller/homeController/homeController'
+import { useTokenValidator } from '../../../libs/zustand/globalStore'
 import { useHome } from '../../../pages/home/useHome'
-vi.mock('../../../controller/playlistController/playlistController')
+vi.mock('../../../controller/homeController/homeController')
+vi.mock('../../../libs/zustand/globalStore', () => ({
+  useTokenValidator: () => ({
+    validateStatus: vi.fn(),
+  }),
+}))
 
 describe('useHome', () => {
-  it('Should execute the function handleGetRecentPlayedTracks', async () => {
+  it('Should execute the function getRecentPlayedTracks', async () => {
     const recentPlayed = [
       {
         track: {
@@ -26,13 +32,16 @@ describe('useHome', () => {
       },
     ]
 
-    ;(getPlaylistList as jest.Mock).mockResolvedValue({
+    ;(getRecentPlayedTracks as jest.Mock).mockResolvedValue({
       items: recentPlayed,
     })
 
     const { result } = renderHook(() => useHome())
-    await waitFor(() =>
-      expect(result.current.recentPlayedTracks).not.toEqual(recentPlayed),
-    )
+    const validateToken = renderHook(() => useTokenValidator())
+
+    await waitFor(() => {
+      expect(result.current.recentPlayedTracks).not.toEqual(recentPlayed)
+      expect(validateToken.result.current.validateStatus).not.toHaveBeenCalled()
+    })
   })
 })

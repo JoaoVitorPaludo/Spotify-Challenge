@@ -11,7 +11,7 @@ export function PlaylistPage() {
     handlePlaylistModal,
     playlistList,
     setHandlePlayListModal,
-    handlePagenate,
+    handlePaginate,
     getPlaylist,
   } = usePlaylist()
 
@@ -73,7 +73,7 @@ export function PlaylistPage() {
           count={playlistList.total > 5 ? Math.ceil(playlistList.total / 5) : 1}
           color="secondary"
           shape="rounded"
-          onChange={handlePagenate}
+          onChange={handlePaginate}
         />
       </S.PlaylistPagination>
     </S.PlaylistPageComponent>

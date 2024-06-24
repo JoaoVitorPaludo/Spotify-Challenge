@@ -18,7 +18,6 @@ export const useAlbums = () => {
         5,
         offset || 0,
       )
-      console.log(data)
       setAlbumsList(data)
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -26,6 +25,7 @@ export const useAlbums = () => {
       }
     }
   }
+
   async function handlePaginate(
     event: React.ChangeEvent<unknown>,
     value: number,

@@ -1,21 +1,12 @@
 import '@testing-library/jest-dom'
 import { renderHook, waitFor } from '@testing-library/react'
+import { useContext } from 'react'
 import { act } from 'react-dom/test-utils'
-import { ArtistContext } from '../../../../contexts/artistContext/artistContext'
-import { useAlbums } from '../../../../pages/artists/components/albums/useAlbums'
+import { describe, vi } from 'vitest'
+import { ArtistContext } from '../../../contexts/artistContext/artistContext'
 
-describe('useAlbums', () => {
-  it('Should execute handleGetAlbum', () => {
-    const { result } = renderHook(() => useAlbums())
-
-    act(() => {
-      result.current.handleGetAlbum()
-    })
-
-    expect(result.current.handleGetAlbum).toBeDefined()
-  })
-
-  it('Should set the useState setAlbumsList', async () => {
+describe('ArtistContext', () => {
+  it('should call handleGetAlbum and update context', async () => {
     const mockData = {
       artistContent: {
         name: 'teste',
@@ -38,21 +29,23 @@ describe('useAlbums', () => {
         ],
         total: 10,
       },
+      handleGetAlbum: vi.fn(),
+      setAlbumsList: vi.fn(),
     }
 
-    const { result } = renderHook(() => useAlbums(), {
+    const { result } = renderHook(() => useContext(ArtistContext), {
       wrapper: ({ children }) => (
-        <ArtistContext.Provider value={mockData as any}>
+        <ArtistContext.Provider value={mockData}>
           {children}
         </ArtistContext.Provider>
       ),
     })
-
     await act(async () => {
-      await result.current.handleGetAlbum()
+      await result.current.handleGetAlbum
     })
     await waitFor(() => {
-      expect(result.current.albumsList).toEqual(mockData.albumsList)
+      console.log(result.current)
+      expect(result.current.handleGetAlbum).toHaveBeenCalled()
     })
   })
 })

@@ -66,7 +66,7 @@ export const usePlaylist = () => {
     }
   }
 
-  async function handlePagenate(
+  async function handlePaginate(
     event: React.ChangeEvent<unknown>,
     value: number,
   ) {
@@ -80,7 +80,7 @@ export const usePlaylist = () => {
     setHandlePlayListModal,
     handlePlaylistModal,
     playlistList,
-    handlePagenate,
+    handlePaginate,
     getPlaylist,
   }
 }
