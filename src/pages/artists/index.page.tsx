@@ -24,7 +24,7 @@ export function ArtistsPage() {
           ))}
         </S.ArtistsPageList>
       ) : (
-        <S.ArtistsPageList>
+        <S.ArtistsPageList data-testid="artists-page-noList">
           <S.ArtistsPageListItem>
             <S.SkeletonComponent width={4} height={4} borderSize="50" />
             <S.SkeletonComponent width={8} height={1.2} borderSize="2" />
