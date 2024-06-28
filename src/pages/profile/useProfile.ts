@@ -35,7 +35,7 @@ export const useProfile = () => {
       setProfilList(data)
     } catch (error) {
       if (error instanceof AxiosError) {
-        validateStatus(error.response!.status, removeCookie('token'))
+        validateStatus(error.response!.status, removeCookie)
       }
     }
   }

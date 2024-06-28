@@ -93,4 +93,51 @@ describe('ArtistsPage', () => {
       expect(result.current.handleGetAlbum).toHaveBeenCalled()
     })
   })
+
+  // it('Should execute handlePaginate', async () => {
+  //   const mockData = {
+  //     artistContent: {
+  //       name: 'teste',
+  //       image: 'http://example.com/artist.jpg',
+  //     },
+  //     albumsList: {
+  //       items: [
+  //         {
+  //           id: '1',
+  //           images: [{ url: 'http://example.com/image1.jpg' }],
+  //           name: 'Album 1',
+  //           release_date: '2022-01-01',
+  //         },
+  //         {
+  //           id: '2',
+  //           images: [{ url: 'http://example.com/image2.jpg' }],
+  //           name: 'Album 2',
+  //           release_date: '2022-02-02',
+  //         },
+  //       ],
+  //       total: 10,
+  //     },
+  //     handleGetAlbum: vi.fn(),
+  //     setAlbumsList: vi.fn(),
+  //     handlePaginate: vi.fn(),
+  //   }
+  //   render(
+  //     <BrowserRouter>
+  //       <ArtistContext.Provider value={mockData as any}>
+  //         <ArtistsPage />
+  //       </ArtistContext.Provider>
+  //     </BrowserRouter>,
+  //   )
+
+  //   const { result } = renderHook(() => useArtists())
+
+  //   // await act(async () => {
+  //   //   // Simula um clique no botão de paginação para a página 2
+  //   //   const pageButton = screen.getAllByTestId('artists-page-pagination')
+  //   //   fireEvent.click(pageButton[1])
+  //   // })
+  //   await waitFor(() => {
+  //     console.log(result)
+  //   })
+  // })
 })

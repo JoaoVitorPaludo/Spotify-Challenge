@@ -33,6 +33,7 @@ export function ArtistsPage() {
       )}
       <S.ArtistsPagePagination>
         <Pagination
+          data-testid="artists-page-pagination"
           count={artistList.total > 5 ? Math.ceil(artistList.total / 5) : 1}
           color="secondary"
           shape="rounded"

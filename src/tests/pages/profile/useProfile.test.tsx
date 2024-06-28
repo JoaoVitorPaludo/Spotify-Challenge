@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 
 import { renderHook, waitFor } from '@testing-library/react'
+import { AxiosError } from 'axios'
 import { vi } from 'vitest'
 import { getProfileInfos } from '../../../controller/profileController/profileController'
 import { useProfile } from '../../../pages/profile/useProfile'
@@ -34,10 +35,23 @@ describe('useProfile', () => {
 
   it('Should remove cookie if has as error', async () => {
     const mockData = {}
-
-    ;(getProfileInfos as jest.Mock).mockRejectedValue({
-      response: { status: 401 },
-    })
+    const mockError = new AxiosError(
+      'Unexpected error',
+      '401',
+      undefined,
+      undefined,
+      {
+        data: {},
+        status: 401,
+        headers: {},
+        config: {
+          headers: 'Content-Type: application/json' as any,
+        },
+        statusText: 'Unauthorized',
+        request: {},
+      },
+    )
+    ;(getProfileInfos as jest.Mock).mockRejectedValue(mockError)
     const { result } = renderHook(() => useProfile())
     await waitFor(() => expect(result.current.profileList).toEqual(mockData))
   })

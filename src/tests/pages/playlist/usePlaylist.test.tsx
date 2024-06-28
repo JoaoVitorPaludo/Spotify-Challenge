@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 
 import { renderHook, waitFor } from '@testing-library/react'
+import { AxiosError } from 'axios'
 import { vi } from 'vitest'
 import { getPlaylistList } from '../../../controller/playlistController/playlistController'
 import { usePlaylist } from '../../../pages/playlist/usePlaylist'
@@ -34,48 +35,26 @@ describe('usePlaylist', () => {
 
   it('Should remove cookie if has as error', async () => {
     const mockData = {}
-    ;(getPlaylistList as jest.Mock).mockRejectedValue({
-      response: { status: 401 },
-    })
-    const { result } = renderHook(() => usePlaylist(), {
-      initialProps: {
-        ...mockData,
+    const mockError = new AxiosError(
+      'Unexpected error',
+      '401',
+      undefined,
+      undefined,
+      {
+        data: {},
+        status: 401,
+        headers: {},
+        config: {
+          headers: 'Content-Type: application/json' as any,
+        },
+        statusText: 'Unauthorized',
+        request: {},
       },
-    })
+    )
+    ;(getPlaylistList as jest.Mock).mockRejectedValue(mockError)
+    const { result } = renderHook(() => usePlaylist())
     await waitFor(() => {
-      expect(result.current.playlistList).toEqual({})
+      expect(result.current.playlistList).toEqual(mockData)
     })
   })
-
-  // it('Shout set the hook useState setPlaylistList', async () => {
-  //   const mockDataResult = {
-  //     items: {
-  //       id: '01',
-  //       images: [
-  //         {
-  //           height: 10,
-  //           url: 'http://image.com',
-  //           width: 10,
-  //         },
-  //       ],
-  //       name: 'name test',
-  //       owner: {
-  //         display_name: 'display name test',
-  //       },
-  //     },
-  //     total: 10,
-  //   }
-
-  //   const { result } = renderHook(() => usePlaylist(), {
-  //     initialProps: {
-  //       ...mockDataResult,
-  //     },
-  //   })
-  //   await act(async () => {
-  //     await result.current.getPlaylist()
-  //   })
-  //   await waitFor(() => {
-  //     expect(result.current.playlistList).toEqual(mockDataResult)
-  //   })
-  // })
 })

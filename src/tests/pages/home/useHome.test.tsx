@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
 import { renderHook, waitFor } from '@testing-library/react'
+import { AxiosError } from 'axios'
 import { vi } from 'vitest'
 import { getRecentPlayedTracks } from '../../../controller/homeController/homeController'
 import { useTokenValidator } from '../../../libs/zustand/globalStore'
@@ -43,5 +44,30 @@ describe('useHome', () => {
       expect(result.current.recentPlayedTracks).not.toEqual(recentPlayed)
       expect(validateToken.result.current.validateStatus).not.toHaveBeenCalled()
     })
+  })
+
+  it('Should return an error if the token is invalid', async () => {
+    const mockError = new AxiosError(
+      'Unexpected error',
+      '401',
+      undefined,
+      undefined,
+      {
+        data: {},
+        status: 401,
+        headers: {},
+        config: {
+          headers: 'Content-Type: application/json' as any,
+        },
+        statusText: 'Unauthorized',
+        request: {},
+      },
+    )
+
+    ;(getRecentPlayedTracks as jest.Mock).mockRejectedValue(mockError)
+
+    const { result } = renderHook(() => useHome())
+
+    await waitFor(() => expect(result.current.recentPlayedTracks).toEqual([]))
   })
 })
