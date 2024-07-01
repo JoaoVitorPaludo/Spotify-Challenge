@@ -2,6 +2,7 @@ import '@testing-library/jest-dom'
 
 import { renderHook, waitFor } from '@testing-library/react'
 import { AxiosError } from 'axios'
+import { act } from 'react-dom/test-utils'
 import { vi } from 'vitest'
 import { getPlaylistList } from '../../../controller/playlistController/playlistController'
 import { usePlaylist } from '../../../pages/playlist/usePlaylist'
@@ -55,6 +56,15 @@ describe('usePlaylist', () => {
     const { result } = renderHook(() => usePlaylist())
     await waitFor(() => {
       expect(result.current.playlistList).toEqual(mockData)
+    })
+  })
+
+  it('Should execute the function handlePaginate', async () => {
+    const { result } = renderHook(() => usePlaylist())
+
+    await act(async () => {
+      const event: React.ChangeEvent<unknown> = new Event('change') as any
+      result.current.handlePaginate(event, 1)
     })
   })
 })

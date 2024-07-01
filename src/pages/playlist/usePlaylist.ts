@@ -5,11 +5,6 @@ import { getPlaylistList } from '../../controller/playlistController/playlistCon
 import { useTokenValidator } from '../../libs/zustand/globalStore'
 
 interface PlaylistListItemProps {
-  collaborative: boolean
-  description: string
-  external_urls: {
-    spotify: string
-  }
   href: string
   id: string
   images: {
@@ -28,22 +23,8 @@ interface PlaylistListItemProps {
     type: string
     uri: string
   }
-  primary_color: string
-  public: boolean
-  snapshot_id: string
-  tracks: {
-    href: string
-    total: number
-  }
-  type: string
-  uri: string
 }
 interface PlaylistListProps {
-  href: string
-  limit: number
-  next?: string
-  offset: number
-  previous?: string
   total: number
   items: PlaylistListItemProps[]
 }

@@ -38,27 +38,25 @@ export function PlaylistPage() {
         />
       </Dialog>
       {playlistList?.items ? (
-        <>
-          <S.PlaylistPageList>
-            {playlistList?.items?.map((playlistList) => (
-              <S.PlaylistPageListItem key={playlistList.id}>
-                {playlistList?.images?.length > 0 ? (
-                  <img src={playlistList.images[0].url} alt="Playlist Image" />
-                ) : (
-                  <div className="no-image">
-                    <PiMusicNotesDuotone size={32} />
-                  </div>
-                )}
-                <S.PlaylistPageListLabel>
-                  <p>{playlistList.name}</p>
-                  <span>{playlistList.owner.display_name}</span>
-                </S.PlaylistPageListLabel>
-              </S.PlaylistPageListItem>
-            ))}
-          </S.PlaylistPageList>
-        </>
+        <S.PlaylistPageList data-testid="playlist-list">
+          {playlistList?.items?.map((playlistList) => (
+            <S.PlaylistPageListItem key={playlistList.id}>
+              {playlistList?.images?.length > 0 ? (
+                <img src={playlistList.images[0].url} alt="Playlist Image" />
+              ) : (
+                <div className="no-image" data-testid="playlist-list-no-image">
+                  <PiMusicNotesDuotone size={32} />
+                </div>
+              )}
+              <S.PlaylistPageListLabel>
+                <p>{playlistList.name}</p>
+                <span>{playlistList.owner.display_name}</span>
+              </S.PlaylistPageListLabel>
+            </S.PlaylistPageListItem>
+          ))}
+        </S.PlaylistPageList>
       ) : (
-        <S.PlaylistPageList>
+        <S.PlaylistPageList data-testid="playlist-list-no-content">
           <S.PlaylistPageListItem>
             <S.SkeletonComponent width={4.5} height={4.5} borderSize="0" />
             <S.PlaylistPageListLabel>

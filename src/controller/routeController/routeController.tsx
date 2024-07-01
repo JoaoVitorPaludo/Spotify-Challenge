@@ -1,6 +1,6 @@
 import { api } from '../../service/api'
 
-export const getAcessToken = async (code: string) => {
+export const getAccessToken = async (code: string) => {
   const response = await api.post(
     'https://accounts.spotify.com/api/token',
     {

@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import { SidebarComponent } from '../components/Sidebar/sidebar'
 import { ArtistProvider } from '../contexts/artistContext/artistContext'
-import { getAcessToken } from '../controller/routeController/routeController'
+import { getAccessToken } from '../controller/routeController/routeController'
 import { AlbumsPage } from '../pages/artists/components/albums/index.page'
 import { ArtistsPage } from '../pages/artists/index.page'
 import { HomePage } from '../pages/home/index.page'
@@ -51,7 +51,7 @@ function ValidateRoutes() {
 
   async function getAuthToken(code: string) {
     try {
-      const { data } = await getAcessToken(code)
+      const { data } = await getAccessToken(code)
       setCookie('token', data.access_token)
     } catch (err) {}
   }

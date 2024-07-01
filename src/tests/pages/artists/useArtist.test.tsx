@@ -71,7 +71,7 @@ describe('useArtists', () => {
 })
 
 describe('useArtists', () => {
-  it('Should call handlePaginate and update state accordingly', async () => {
+  it('Should call handlePaginate ', async () => {
     const { result } = renderHook(() => useArtists())
 
     await act(async () => {
