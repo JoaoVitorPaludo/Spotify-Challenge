@@ -13,9 +13,19 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       reporter: ['text', 'json', 'html'],
-      exclude: ['**/node_modules/**', '**/dist/**', '**/main.tsx/**'],
+      exclude: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/main.tsx/**',
+        '**/src/styles/global.ts**',
+      ],
     },
-    exclude: ['**/node_modules/**', '**/dist/**', '**/main.tsx/**'],
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/main.tsx/**',
+      '**/src/styles/global.ts**',
+    ],
   },
   plugins: [react()],
   server: {
