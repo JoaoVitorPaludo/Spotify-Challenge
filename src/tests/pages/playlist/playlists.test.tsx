@@ -17,18 +17,6 @@ describe('PlaylistPage', () => {
   })
 })
 
-// describe('PlaylistPage', () => {
-//   it('Should pass the props to the modal component', async () => {
-//     const { result } = renderHook(usePlaylist)
-//     render(
-//       <ModalNewPlaylist
-//         getPlaylist={() => result.current.getPlaylist(0)}
-//         handleCloseModal={() => result.current.setHandlePlayListModal(false)}
-//       />,
-//     )
-//   })
-// })
-
 describe('PlaylistPage', () => {
   beforeEach(() => {
     vi.mock('../../../pages/playlist/usePlaylist', () => ({

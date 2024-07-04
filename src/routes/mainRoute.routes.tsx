@@ -12,7 +12,7 @@ import { PlaylistPage } from '../pages/playlist/index.page'
 import { ProfilePage } from '../pages/profile/index.page'
 import { PrivateRoutesContainer } from './styles'
 
-function PrivateRoutes() {
+export function PrivateRoutes() {
   const [cookies] = useCookies(['token'])
   if (!cookies.token) return <LoginPage />
   return (
@@ -43,7 +43,7 @@ function PrivateRoutes() {
   )
 }
 
-function ValidateRoutes() {
+export function ValidateRoutes() {
   const navigate = useNavigate()
   const [, setCookie, removeCookie] = useCookies(['token'])
   const urlParams = new URLSearchParams(window.location.search)
