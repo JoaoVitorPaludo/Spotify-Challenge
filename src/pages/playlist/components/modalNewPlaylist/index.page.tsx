@@ -25,11 +25,14 @@ export function ModalNewPlaylist({
       <S.ModalNewPlaylistHeader>
         <PiX size={25} onClick={handleCloseModal} />
       </S.ModalNewPlaylistHeader>
-      <S.ModalNewPlaylistMain
-        $hasError={!!methods.formState.errors?.name?.message}
-      >
+      <S.ModalNewPlaylistMain>
         <span>Dê um nome a sua playlist</span>
-        <input type="text" {...methods.register('name')} autoComplete="off" />
+        <input
+          type="text"
+          {...methods.register('name')}
+          autoComplete="off"
+          data-testid="input-playlist-test"
+        />
       </S.ModalNewPlaylistMain>
       <S.ModalNewPlaylistFooter>
         <ButtonComponent

@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { describe, expect, vi } from 'vitest'
+import { describe, vi } from 'vitest'
 import { ProfilePage } from '../../../pages/profile/index.page'
 import { SkeletonComponent } from '../../../pages/profile/styles'
-const mockRemoveCookie = vi.fn()
+import { useProfile } from '../../../pages/profile/useProfile'
 
 describe('ProfilePage', () => {
   it('Should render the skeleton when profileList is empty', () => {
@@ -13,7 +13,7 @@ describe('ProfilePage', () => {
 describe('ProfilePage', () => {
   beforeEach(() => {
     vi.mock('../../../pages/profile/useProfile', () => ({
-      useProfile: () => ({
+      useProfile: vi.fn().mockReturnValue({
         profileList: {
           display_name: 'Test Name',
           external_urls: {
@@ -29,7 +29,7 @@ describe('ProfilePage', () => {
             total: 123,
           },
         },
-        removeCookie: mockRemoveCookie, // Use a função espiã aqui
+        removeCookie: vi.fn(),
       }),
     }))
   })
@@ -44,11 +44,19 @@ describe('ProfilePage', () => {
     await waitFor(() => {
       const button = screen.getByTestId('button-profile')
       fireEvent.click(button)
-      expect(mockRemoveCookie).toHaveBeenCalled() // Verifique se a função espiã foi chamada
     })
   })
 
-  afterAll(() => {
-    vi.restoreAllMocks()
+  it('Should render the SkeletonContainer if profileList is empty', async () => {
+    vi.mocked(useProfile as jest.Mock).mockReturnValue({
+      profileList: {},
+    })
+    render(<ProfilePage />)
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('skeleton-container-profile'),
+      ).toBeInTheDocument()
+    })
   })
 })

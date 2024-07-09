@@ -10,17 +10,19 @@ vi.mock('../../../libs/zustand/globalStore', () => ({
     }),
   })),
 }))
+
 describe('useTokenValidator', () => {
-  it('Should remove token if status is 401', async () => {
+  it('Deve remover o token se o status for 401', () => {
     const { validateStatus } = useTokenValidator()
     const mockRemoveCookieFunction = vi.fn()
     validateStatus(401, mockRemoveCookieFunction)
     expect(mockRemoveCookieFunction).toHaveBeenCalledWith('token')
   })
-  it('Should not remove token if status is not 401', async () => {
+
+  it('Não deve remover o token se o status não for 401', () => {
     const { validateStatus } = useTokenValidator()
     const mockRemoveCookieFunction = vi.fn()
     validateStatus(200, mockRemoveCookieFunction)
-    expect(mockRemoveCookieFunction).not.toHaveBeenCalledWith('token')
+    expect(mockRemoveCookieFunction).not.toHaveBeenCalled()
   })
 })

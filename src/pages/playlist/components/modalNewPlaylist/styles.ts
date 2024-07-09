@@ -24,10 +24,8 @@ export const ModalNewPlaylistHeader = styled.header`
     }
   }
 `
-type ModalNewPlaylistMainProps = {
-  $hasError: boolean
-}
-export const ModalNewPlaylistMain = styled.main<ModalNewPlaylistMainProps>`
+
+export const ModalNewPlaylistMain = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -48,8 +46,7 @@ export const ModalNewPlaylistMain = styled.main<ModalNewPlaylistMainProps>`
     height: 2.25rem;
     background: transparent;
     border: none;
-    border-bottom: 1px solid
-      ${(props) => (props.$hasError ? '#9c0000' : '#ffffff33')};
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     color: ${(props) => props.theme['white-100']};
     outline: none !important;
     text-align: center;

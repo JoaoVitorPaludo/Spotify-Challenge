@@ -41,3 +41,9 @@ export const SkeletonComponent = styled(Skeleton)<SkeletonComponentProps>`
   height: ${(props) => `${props.height}rem`}!important;
   border-radius: ${(props) => `${props.borderSize}rem`};
 `
+
+export const SkeletonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`

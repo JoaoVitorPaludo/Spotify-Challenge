@@ -17,7 +17,7 @@ vi.mock('../../controller/routeController/routeController', () => ({
   }),
 }))
 vi.mock('react-cookie', () => ({
-  useCookies: vi.fn().mockReturnValue([, vi.fn(), vi.fn()]),
+  useCookies: vi.fn().mockReturnValue([undefined, vi.fn(), vi.fn()]),
 }))
 
 describe('PublicRoutes', () => {
@@ -29,8 +29,8 @@ describe('PublicRoutes', () => {
     const redirectToCallback = '/callback'
 
     // Mock window.location.search
-    delete window.location
-    window.location = { search: '?code=fakeCode' }
+    delete (window as any).location
+    window.location = { search: '?code=fakeCode' } as Location
 
     render(
       <MemoryRouter initialEntries={[redirectToCallback]}>
@@ -49,11 +49,15 @@ describe('PublicRoutes', () => {
   it('Should remove toke if the code is not present', async () => {
     const redirectToCallback = '/callback'
 
-    delete window.location
-    window.location = { search: '' }
+    delete (window as any).location
+    window.location = { search: '' } as Location
 
     const removeCookieMock = vi.fn()
-    vi.mocked(useCookies).mockReturnValue([, vi.fn(), removeCookieMock])
+    vi.mocked(useCookies as jest.Mock).mockReturnValue([
+      undefined,
+      vi.fn(),
+      removeCookieMock,
+    ])
 
     render(
       <MemoryRouter initialEntries={[redirectToCallback]}>
@@ -72,7 +76,11 @@ describe('PublicRoutes', () => {
   it('Should call the PrivateRoutes if the route is *', async () => {
     const redirectToPrivateRoutes = '/home'
     const cookies = { token: 'fakeToken' }
-    vi.mocked(useCookies).mockReturnValue([cookies, vi.fn(), vi.fn()])
+    vi.mocked(useCookies as jest.Mock).mockReturnValue([
+      cookies,
+      vi.fn(),
+      vi.fn(),
+    ])
 
     render(
       <MemoryRouter initialEntries={[redirectToPrivateRoutes]}>
@@ -86,7 +94,11 @@ describe('PublicRoutes', () => {
   it('Should call the LoginPage  if the token is undefined', async () => {
     const redirectToPrivateRoutes = '/home'
     const cookies = { token: undefined }
-    vi.mocked(useCookies).mockReturnValue([cookies, vi.fn(), vi.fn()])
+    vi.mocked(useCookies as jest.Mock).mockReturnValue([
+      cookies,
+      vi.fn(),
+      vi.fn(),
+    ])
     render(
       <MemoryRouter initialEntries={[redirectToPrivateRoutes]}>
         <Routes>

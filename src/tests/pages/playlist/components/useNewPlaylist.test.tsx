@@ -28,7 +28,22 @@ describe('useNewPlaylist', () => {
     })
     await waitFor(() => expect(getPlaylist).not.toHaveBeenCalled())
   })
+  it('Should return a error', async () => {
+    const mockError = new Error('Unexpected error')
 
+    ;(postNewPlaylist as jest.Mock).mockRejectedValue(mockError)
+    const handleCloseModal = vi.fn()
+    const getPlaylist = vi.fn()
+    const { result } = renderHook(() =>
+      useNewPlaylist({
+        getPlaylist,
+        handleCloseModal,
+      }),
+    )
+    act(() => {
+      result.current.handleSubmitForm(dataForm)
+    })
+  })
   it('Should return an error if the token is invalid', async () => {
     const mockError = new AxiosError(
       'Unexpected error',

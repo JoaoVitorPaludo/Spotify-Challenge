@@ -17,10 +17,10 @@ export function ProfilePage() {
           />
         </section>
       ) : (
-        <>
+        <S.SkeletonContainer data-testid="skeleton-container-profile">
           <S.SkeletonComponent borderSize="4" width={8} height={8} />
           <S.SkeletonComponent borderSize="1.5" width={8} height={2.625} />
-        </>
+        </S.SkeletonContainer>
       )}
     </S.ProfilePageComponent>
   )
