@@ -35,7 +35,6 @@ describe('usePlaylist', () => {
   })
 
   it('Should remove cookie if has as error', async () => {
-    const mockData = {}
     const mockError = new AxiosError(
       'Unexpected error',
       '401',
@@ -55,8 +54,16 @@ describe('usePlaylist', () => {
     ;(getPlaylistList as jest.Mock).mockRejectedValue(mockError)
     const { result } = renderHook(() => usePlaylist())
     await waitFor(() => {
-      expect(result.current.playlistList).toEqual(mockData)
+      expect(result.current.playlistList).toEqual({})
     })
+  })
+
+  it('Should return a error', async () => {
+    const mockError = new Error('Unexpected error')
+
+    ;(getPlaylistList as jest.Mock).mockRejectedValue(mockError)
+    const { result } = renderHook(() => usePlaylist())
+    await waitFor(() => expect(result.current.playlistList).toEqual({}))
   })
 
   it('Should execute the function handlePaginate', async () => {

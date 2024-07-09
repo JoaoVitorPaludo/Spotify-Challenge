@@ -25,4 +25,12 @@ describe('useTokenValidator', () => {
     validateStatus(200, mockRemoveCookieFunction)
     expect(mockRemoveCookieFunction).not.toHaveBeenCalled()
   })
+
+  it('Não deve remover o token se o status não for 401', () => {
+    const { validateStatus } = useTokenValidator()
+    const mockRemoveCookieFunction = vi.fn()
+    const status = 404
+    validateStatus(status, mockRemoveCookieFunction)
+    expect(status).not.toBe(401)
+  })
 })

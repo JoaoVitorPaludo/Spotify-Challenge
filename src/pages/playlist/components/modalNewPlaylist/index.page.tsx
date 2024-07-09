@@ -23,7 +23,11 @@ export function ModalNewPlaylist({
       onSubmit={methods.handleSubmit(handleSubmitForm)}
     >
       <S.ModalNewPlaylistHeader>
-        <PiX size={25} onClick={handleCloseModal} />
+        <PiX
+          size={25}
+          onClick={handleCloseModal}
+          data-testid="close-modal-test"
+        />
       </S.ModalNewPlaylistHeader>
       <S.ModalNewPlaylistMain>
         <span>Dê um nome a sua playlist</span>

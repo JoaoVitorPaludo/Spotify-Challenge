@@ -63,10 +63,20 @@ describe('useArtists', () => {
         request: {},
       },
     )
+
     ;(getArtistsList as jest.Mock).mockRejectedValue(mockError)
     const { result } = renderHook(() => useArtists())
 
-    await waitFor(() => expect(result.current.artistList).toEqual(mockData))
+    await waitFor(() => {
+      expect(result.current.artistList).toEqual(mockData)
+    })
+  })
+  it('Should return a error', async () => {
+    const mockError = new Error('Unexpected error')
+
+    ;(getArtistsList as jest.Mock).mockRejectedValue(mockError)
+    const { result } = renderHook(() => useArtists())
+    await waitFor(() => expect(result.current.artistList).toEqual({}))
   })
 })
 
