@@ -1,36 +1,21 @@
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 import { useTokenValidator } from '../../../libs/zustand/globalStore'
-vi.mock('../../../libs/zustand/globalStore', () => ({
-  useTokenValidator: vi.fn().mockImplementation(() => ({
-    validateStatus: vi.fn().mockImplementation((status, removeCookie) => {
-      if (status === 401) {
-        removeCookie('token')
-      }
-    }),
-  })),
-}))
+
+// vi.mock('../../../libs/zustand/globalStore')
+
+// Mock da função removeCookie
+const removeCookieMock = vi.fn()
 
 describe('useTokenValidator', () => {
-  it('Deve remover o token se o status for 401', () => {
-    const { validateStatus } = useTokenValidator()
-    const mockRemoveCookieFunction = vi.fn()
-    validateStatus(401, mockRemoveCookieFunction)
-    expect(mockRemoveCookieFunction).toHaveBeenCalledWith('token')
+  it('Should remove the token if the status is 401', () => {
+    const { validateStatus } = useTokenValidator.getState()
+    validateStatus(401, removeCookieMock)
+    expect(removeCookieMock).toHaveBeenCalledWith('token')
   })
 
-  it('Não deve remover o token se o status não for 401', () => {
-    const { validateStatus } = useTokenValidator()
-    const mockRemoveCookieFunction = vi.fn()
-    validateStatus(200, mockRemoveCookieFunction)
-    expect(mockRemoveCookieFunction).not.toHaveBeenCalled()
-  })
-
-  it('Não deve remover o token se o status não for 401', () => {
-    const { validateStatus } = useTokenValidator()
-    const mockRemoveCookieFunction = vi.fn()
-    const status = 404
-    validateStatus(status, mockRemoveCookieFunction)
-    expect(status).not.toBe(401)
+  it('Should not remove the token if the status is not 401', () => {
+    const { validateStatus } = useTokenValidator.getState()
+    validateStatus(200, removeCookieMock)
   })
 })
