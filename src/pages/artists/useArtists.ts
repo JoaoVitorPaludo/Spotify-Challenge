@@ -54,6 +54,8 @@ export const useArtists = () => {
     event: React.ChangeEvent<unknown>,
     value: number,
   ) {
+    console.log(event)
+
     const newValue = value - 1
     getTopArtistsList(newValue * 5)
   }

@@ -51,6 +51,8 @@ export const usePlaylist = () => {
     event: React.ChangeEvent<unknown>,
     value: number,
   ) {
+    console.log(event)
+
     const newValue = value - 1
     getPlaylist(newValue * 5)
   }

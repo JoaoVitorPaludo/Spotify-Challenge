@@ -30,6 +30,7 @@ export const useAlbums = () => {
     event: React.ChangeEvent<unknown>,
     value: number,
   ) {
+    console.log(event)
     const newValue = value - 1
     await handleGetAlbum(newValue)
   }
