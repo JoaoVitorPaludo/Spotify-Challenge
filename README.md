@@ -6,7 +6,7 @@
 - [X] Listar artistas
 - [X] Listar albuns de um artista
 - [X] Utilizar paginação (scroll infinito ou não)
-- [ ] Funcionamento offline
+- [X] Funcionamento offline
 - [X] Testes unitários
 - [ ] Deploy da aplicação
 

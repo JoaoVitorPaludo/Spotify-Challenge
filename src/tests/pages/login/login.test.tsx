@@ -17,7 +17,7 @@ describe('LoginPage', () => {
     fireEvent.click(screen.getByRole('button'))
 
     expect(window.location.href).toBe(
-      `${import.meta.env.VITE_API_URL}/authorize?client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=http://localhost:5174/callback&response_type=code&scope=user-top-read playlist-modify-public playlist-modify-private user-read-recently-played`,
+      `${import.meta.env.VITE_API_URL}/authorize?client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_REDIRECT_URL}&response_type=code&scope=user-top-read playlist-modify-public playlist-modify-private user-read-recently-played`,
     )
   })
 })

@@ -19,7 +19,7 @@ describe('routeController', () => {
       {
         grant_type: 'authorization_code',
         code,
-        redirect_uri: 'http://localhost:5174/callback',
+        redirect_uri: `${import.meta.env.VITE_REDIRECT_URL}`,
         scope: 'user-top-read playlist-modify-public playlist-modify-private',
       },
       {
