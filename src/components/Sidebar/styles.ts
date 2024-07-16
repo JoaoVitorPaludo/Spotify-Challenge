@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 export const SidebarComponentContainer = styled.main`
   min-width: 15.625rem;
-  // padding: 1.875rem;
   background-color: ${(props) => props.theme['black-900']};
   display: flex;
   flex-direction: column;
@@ -11,10 +10,11 @@ export const SidebarComponentHeader = styled.header`
   display: flex;
   justify-content: left;
   padding: 1.5rem;
-  //padding-bottom: 2.5rem;
-
   img {
     cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `
 export const SidebarComponentMain = styled.main`
@@ -22,6 +22,13 @@ export const SidebarComponentMain = styled.main`
   flex-direction: column;
   flex: 1;
   padding: 0 0.5rem;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
 `
 
 interface SidebarComponentItemProps {
@@ -50,6 +57,10 @@ export const SidebarComponentItem = styled(Link)<SidebarComponentItemProps>`
   &:hover {
     background-color: #ffffff1a;
   }
+  @media (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 export const SidebarComponentFooter = styled.footer`
   padding: 0.5rem 0.5rem;
@@ -77,5 +88,8 @@ export const SidebarComponentFooter = styled.footer`
   span {
     font-weight: 500;
     font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `

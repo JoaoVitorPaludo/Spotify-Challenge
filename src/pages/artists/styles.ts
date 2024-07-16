@@ -6,7 +6,6 @@ export const ArtistsPageComponent = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
-  //justify-content: space-between;
   padding-right: 0;
   h1 {
     font-size: 1.75rem;
@@ -20,6 +19,9 @@ export const ArtistsPageComponent = styled.main`
     font-weight: 400;
     line-height: 1.125rem;
     text-align: left;
+  }
+  @media (max-width: 768px) {
+    flex: 1;
   }
 `
 

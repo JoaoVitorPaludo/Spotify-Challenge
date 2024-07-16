@@ -16,4 +16,4 @@
 - [ ] CI/CD
 - [ ] Responsividade (celular e tablet)
 - [ ] Qualidade de código (Sonarqube)
-- [ ] PWA
+- [X] PWA

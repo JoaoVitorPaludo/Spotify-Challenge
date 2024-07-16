@@ -6,6 +6,9 @@ export const PlaylistPageComponent = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    flex: 1;
+  }
 `
 export const PlaylistPageHeader = styled.header`
   display: flex;
