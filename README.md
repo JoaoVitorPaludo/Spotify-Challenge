@@ -12,8 +12,8 @@
 
 ## Bônus
 - [X] Testes E2E
-- [ ] Integração com Sentry
+- [X] Integração com Sentry
 - [ ] CI/CD
-- [ ] Responsividade (celular e tablet)
+- [X] Responsividade (celular e tablet)
 - [ ] Qualidade de código (Sonarqube)
 - [X] PWA
