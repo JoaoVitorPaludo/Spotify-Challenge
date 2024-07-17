@@ -1,1 +1,0 @@
-Pasta para componentes reutilizáveis da aplicação

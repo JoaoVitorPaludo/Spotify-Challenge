@@ -1,19 +1,19 @@
 # Requisitos
 ## Requisitos obrigatórios
-- [ ] Seguimentação de commits
-- [ ] Lint
-- [ ] Autenticação via Spotify
-- [ ] Listar artistas
-- [ ] Listar albuns de um artista
-- [ ] Utilizar paginação (scroll infinito ou não)
-- [ ] Funcionamento offline
-- [ ] Testes unitários
+- [X] Seguimentação de commits
+- [X] Lint
+- [X] Autenticação via Spotify
+- [X] Listar artistas
+- [X] Listar albuns de um artista
+- [X] Utilizar paginação (scroll infinito ou não)
+- [X] Funcionamento offline
+- [X] Testes unitários
 - [ ] Deploy da aplicação
 
 ## Bônus
-- [ ] Testes E2E
-- [ ] Integração com Sentry
+- [X] Testes E2E
+- [X] Integração com Sentry
 - [ ] CI/CD
-- [ ] Responsividade (celular e tablet)
+- [X] Responsividade (celular e tablet)
 - [ ] Qualidade de código (Sonarqube)
-- [ ] PWA
+- [X] PWA

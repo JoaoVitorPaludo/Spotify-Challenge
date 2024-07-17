@@ -1,1 +1,0 @@
-Pasta para as páginas principais da aplicação

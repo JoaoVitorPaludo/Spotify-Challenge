@@ -18,8 +18,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": ["cypress","src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
