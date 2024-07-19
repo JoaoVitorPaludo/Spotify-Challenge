@@ -8,9 +8,9 @@ import { useNewPlaylist } from '../../../../pages/playlist/components/modalNewPl
 const dataForm = {
   name: 'test name',
 }
-vi.mock('api', () => ({
-  get: vi.fn(() => Promise.resolve({ data: {} })),
-}))
+// vi.mock('api', () => ({
+//   get: vi.fn(() => Promise.resolve({ data: {} })),
+// }))
 vi.mock('../../../../controller/playlistController/playlistController')
 
 describe('useNewPlaylist', () => {
