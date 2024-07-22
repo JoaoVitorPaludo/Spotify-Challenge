@@ -8,12 +8,17 @@
 - [X] Utilizar paginação (scroll infinito ou não)
 - [X] Funcionamento offline
 - [X] Testes unitários
-- [ ] Deploy da aplicação
+- [X] Deploy da aplicação
 
 ## Bônus
 - [X] Testes E2E
 - [X] Integração com Sentry
-- [ ] CI/CD
+- [X] CI/CD
 - [X] Responsividade (celular e tablet)
 - [ ] Qualidade de código (Sonarqube)
 - [X] PWA
+
+## URL da aplicação
+```js
+   https://spotify-integration-alpha.vercel.app/
+```
