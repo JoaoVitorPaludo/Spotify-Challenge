@@ -1,13 +1,22 @@
+import { useEffect } from 'react'
 import { BiDisc } from 'react-icons/bi'
 import { CiPlay1 } from 'react-icons/ci'
 import { FiHome, FiUser } from 'react-icons/fi'
 import { GrInstallOption } from 'react-icons/gr'
 import { useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/spotify_logo_full.svg'
+import { PwaInstaller } from '../../libs/pwa/pwaInstaller'
 import * as S from './styles'
+
 export function SidebarComponent() {
   const location = useLocation()
   const navigate = useNavigate()
+  const { handleInstallClick, fecthDeferredPrompt } = PwaInstaller()
+
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', fecthDeferredPrompt)
+  }, [])
+
   return (
     <S.SidebarComponentContainer>
       <S.SidebarComponentHeader>
@@ -44,7 +53,7 @@ export function SidebarComponent() {
         </S.SidebarComponentItem>
       </S.SidebarComponentMain>
       <S.SidebarComponentFooter>
-        <button>
+        <button onClick={handleInstallClick}>
           <GrInstallOption size={24} />
           <span>Instalar PWA</span>
         </button>
