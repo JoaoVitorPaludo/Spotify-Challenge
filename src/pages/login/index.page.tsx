@@ -8,12 +8,6 @@ export function LoginPage() {
     window.location.href = `${import.meta.env.VITE_API_URL}/authorize?client_id=${import.meta.env.VITE_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_REDIRECT_URL}&response_type=code&scope=user-top-read playlist-modify-public playlist-modify-private user-read-recently-played`
   }
 
-  // const { fecthDeferredPrompt } = PwaInstaller()
-
-  // useEffect(() => {
-  //   window.addEventListener('beforeinstallprompt', fecthDeferredPrompt)
-  // }, [])
-
   return (
     <S.LoginContainer>
       <img src={SpotifyLogo} alt="" />

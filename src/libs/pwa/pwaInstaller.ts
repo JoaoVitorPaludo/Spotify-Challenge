@@ -1,7 +1,7 @@
 export const PwaInstaller = () => {
   let deferredPrompt: any = null
 
-  const fecthDeferredPrompt = (e: any) => {
+  const fetchDeferredPrompt = (e: any) => {
     e.preventDefault()
 
     deferredPrompt = e
@@ -12,7 +12,7 @@ export const PwaInstaller = () => {
   }
 
   return {
-    fecthDeferredPrompt,
+    fetchDeferredPrompt,
     handleInstallClick,
   }
 }

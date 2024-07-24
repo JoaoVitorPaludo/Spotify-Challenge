@@ -11,10 +11,10 @@ import * as S from './styles'
 export function SidebarComponent() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { handleInstallClick, fecthDeferredPrompt } = PwaInstaller()
+  const { handleInstallClick, fetchDeferredPrompt } = PwaInstaller()
 
   useEffect(() => {
-    window.addEventListener('beforeinstallprompt', fecthDeferredPrompt)
+    window.addEventListener('beforeinstallprompt', fetchDeferredPrompt)
   }, [])
 
   return (

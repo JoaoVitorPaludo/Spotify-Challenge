@@ -37,7 +37,7 @@ export default defineConfig({
         short_name: 'Spotify App',
         description: 'My integration with Spotify',
         theme_color: '#ffffff',
-        start_url: 'https://spotify-integration-alpha.vercel.app/callback',
+        start_url: 'https://localhost:5174/callback',
         display: 'standalone',
         background_color: '#ffffff',
         prefer_related_applications: false,
