@@ -1,6 +1,5 @@
 ##### Projeto focado para aquirir conhecimento e experiência, utilizando diversas bibliotecas para buscar uma melhor resolução da aplicação. 
-A aplicação consiste em uma integração utilizando os recursos que o Spotify disponibiliza para desenvolvimento.
-
+#####A aplicação consiste em uma integração utilizando os recursos que o Spotify disponibiliza para desenvolvimento.
 
 ## Requisitos obrigatórios
 - [X] Seguimentação de commits
