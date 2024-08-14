@@ -22,7 +22,7 @@
     "@sentry/react": "^8.25.0",
     "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/typescript-estree": "^8.1.0",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "axios-mock-adapter": "^2.0.0",
     "dotenv": "^16.4.5",
     "http-server": "^14.1.1",
