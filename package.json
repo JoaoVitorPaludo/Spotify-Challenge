@@ -38,7 +38,7 @@
     "styled-components": "^6.1.13",
     "workbox-window": "^7.3.0",
     "zod": "^3.23.8",
-    "zustand": "^5.0.1"
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
