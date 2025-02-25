@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.24.1",
     "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/coverage-istanbul": "^3.0.6",
+    "@vitest/coverage-istanbul": "^3.0.7",
     "cypress": "^14.0.3",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
