@@ -50,7 +50,7 @@
     "@types/react-dom": "^19.0.4",
     "@types/sinon": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
-    "@typescript-eslint/parser": "^8.25.0",
+    "@typescript-eslint/parser": "^8.26.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-istanbul": "^3.0.7",
     "cypress": "^14.1.0",
