@@ -21,7 +21,7 @@
     "@mui/material": "^6.4.8",
     "@sentry/react": "^9.6.1",
     "@types/js-cookie": "^3.0.6",
-    "@typescript-eslint/typescript-estree": "^8.26.0",
+    "@typescript-eslint/typescript-estree": "^8.27.0",
     "axios": "^1.8.4",
     "axios-mock-adapter": "^2.1.0",
     "dotenv": "^16.4.7",
