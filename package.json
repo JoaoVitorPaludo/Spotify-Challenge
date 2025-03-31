@@ -28,7 +28,7 @@
     "http-server": "^14.1.1",
     "https-localhost": "^4.7.1",
     "js-cookie": "^3.0.5",
-    "react": "^19.0.0",
+    "react": "^19.1.0",
     "react-cookie": "^8.0.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
