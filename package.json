@@ -19,7 +19,7 @@
     "@emotion/styled": "^11.14.0",
     "@hookform/resolvers": "^5.1.1",
     "@mui/material": "^7.1.2",
-    "@sentry/react": "^9.30.0",
+    "@sentry/react": "^9.31.0",
     "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/typescript-estree": "^8.34.1",
     "axios": "^1.10.0",
