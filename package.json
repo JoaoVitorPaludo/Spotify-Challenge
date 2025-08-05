@@ -18,7 +18,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.1",
-    "@mui/material": "^7.2.0",
+    "@mui/material": "^7.3.0",
     "@sentry/react": "^10.0.0",
     "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/typescript-estree": "^8.39.0",
