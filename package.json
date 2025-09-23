@@ -56,7 +56,7 @@
     "cypress": "^15.2.0",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-react-refresh": "^0.4.21",
     "jsdom": "^27.0.0",
     "react-test-renderer": "^19.1.1",
     "typescript": ">=4.3.5 <5.10.0",
