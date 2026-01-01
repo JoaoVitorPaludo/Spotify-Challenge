@@ -37,7 +37,7 @@
     "react-router-dom": "^7.11.0",
     "styled-components": "^6.1.19",
     "workbox-window": "^7.4.0",
-    "zod": "^4.3.2",
+    "zod": "^4.3.4",
     "zustand": "^5.0.9"
   },
   "devDependencies": {
