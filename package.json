@@ -34,7 +34,7 @@
     "react-hook-form": "^7.71.1",
     "react-icons": "^5.5.0",
     "react-loading-skeleton": "^3.5.0",
-    "react-router-dom": "^7.12.0",
+    "react-router-dom": "^7.13.0",
     "styled-components": "^6.3.8",
     "workbox-window": "^7.4.0",
     "zod": "^4.3.6",
